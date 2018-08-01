@@ -1,0 +1,72 @@
+// compileExpanded: ../../../public/css/$1.css
+@import "variables";
+@import "extend";
+@import "components";
+
+body {
+  background: #f5f6fa;
+  color: #313944;
+}
+
+.py-home {
+  @extend %general-style;
+}
+
+.py-archive {
+  @extend %general-style;
+
+  .archive-table {
+      background-color: #fff;
+      padding: 1.25rem;
+  }
+}
+
+.py-paste{
+  @extend %general-style;
+
+  .code-header {
+    border-bottom: 1px solid rgba(77,82,89,0.07);
+
+    &-button {
+        font-size: 12px;
+    }
+  }
+
+  .syntax {
+    background-color: #fff;
+    padding: 1.25rem;
+
+    pre {
+      white-space: pre-wrap !important;
+    }
+  }
+
+  // .plain-text {
+  //   background-color: #fff;
+  //   padding: 1.25rem;
+  //
+  //   textarea {
+  //     border: none;
+  //     font-size: 13px;
+  //     line-height: 21px;
+  //     height: 200px;
+  //   }
+  //
+  //   // Bootstrap
+  //   .form-control:disabled, .form-control[readonly] {
+  //     background-color: #fff;
+  //   }
+  // }
+
+  &-password{
+    @extend %general-style;
+  }
+}
+
+footer {
+    font-size: 85%;
+
+    .fa-heart {
+      color: #d43c67;
+    }
+}
