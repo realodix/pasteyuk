@@ -18,6 +18,9 @@ use Hashids\Hashids;
 
 class PasteController extends Controller
 {
+    protected $watchTime          = 10;
+    protected $expWatchTime       = 3;
+
     public function submit(Requests\StorePaste $request)
     {
         $title = (empty(trim(Input::get('pasteTitle')))) ? 'Untitled' : Input::get('pasteTitle');
@@ -90,8 +93,6 @@ class PasteController extends Controller
         // Apakah user yang terhubung adalah orang yang membuat post paste?
         $isSameUser = ((Auth::user() == $paste->user && $paste->userId != 0)) ? true : false;
 
-        $watchTime          = 10;
-        $expWatchTime       = 3;
         $expTime            = $paste->expiration;
         $diffTimeCreated    = time()-$paste->created_at->timestamp;
         $diffTimeUpdated    = time()-$paste->updated_at->timestamp;
@@ -106,7 +107,7 @@ class PasteController extends Controller
                 else $expiration = Carbon::parse($expTime)->diffForHumans();
             } else {
                 // Peringatan burn after reading
-                if (time() - strtotime($expTime) > $expWatchTime) {
+                if (time() - strtotime($expTime) > $this->expWatchTime) {
                     $disableBurn = true;
                     $expiration = "Burn after reading";
                 } else $expiration = "Burn after reading (next time)";
@@ -133,7 +134,7 @@ class PasteController extends Controller
                     ]);
                 }
             // Jika pengguna tidak sama dan paste dibuat lebih dari 3 detik yang lalu:
-            } elseif (!$isSameUser && $diffTimeCreated > $expWatchTime) {
+            } elseif (!$isSameUser && $diffTimeCreated > $this->expWatchTime) {
                 return view('paste/password', [
                     'title' => $paste->title,
                     'link' => url()->current()
@@ -150,7 +151,7 @@ class PasteController extends Controller
         }
 
         // Menambah angka view
-        if ($diffTimeUpdated > $watchTime) $paste->increment('views');
+        if ($diffTimeUpdated > $this->watchTime) $paste->increment('views');
 
         // Return view
         return view('paste/view', [
@@ -177,8 +178,6 @@ class PasteController extends Controller
         // Apakah user yang terhubung adalah orang yang menulis paste?
         $isSameUser = ((Auth::user() == $paste->user && $paste->userId != 0)) ? true : false;
 
-        $watchTime          = 10;
-        $expWatchTime       = 3;
         $expTime            = $paste->expiration;
         $diffTimeCreated    = time()-$paste->created_at->timestamp;
         $diffTimeUpdated    = time()-$paste->updated_at->timestamp;
@@ -208,7 +207,7 @@ class PasteController extends Controller
                 }
 
             // Jika pengguna tidak sama dan paste dibuat lebih dari 3 detik yang lalu:
-            } elseif (!$isSameUser && $diffTimeCreated > $expWatchTime) {
+            } elseif (!$isSameUser && $diffTimeCreated > $this->expWatchTime) {
                 return view('paste/password', [
                     'title' => $paste->title,
                     'link' => url()->current()
@@ -225,7 +224,7 @@ class PasteController extends Controller
         }
 
         // Menambah angka view
-        if ($diffTimeUpdated > $watchTime) $paste->increment('views');
+        if ($diffTimeUpdated > $this->watchTime) $paste->increment('views');
 
         return response(Crypt::decryptString($paste->content), 200)
                 ->header('Content-Type', 'text/plain');
@@ -249,7 +248,7 @@ class PasteController extends Controller
                 }
 
             // Jika pengguna tidak sama dan paste dibuat lebih dari 3 detik yang lalu:
-            } elseif (!$isSameUser && $diffTimeCreated > $expWatchTime) {
+            } elseif (!$isSameUser && $diffTimeCreated > $this->expWatchTime) {
                 return view('paste/password', [
                     'title' => $paste->title,
                     'link' => url()->current()

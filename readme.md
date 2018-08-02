@@ -1,11 +1,21 @@
-Paste Yuk!
+<p align="center">![image](docs/images/screenshot.png)</p>
+<h1 align="center">Paste tool built with Laravel.</h1>
 ===
+
+Paste Yuk! is a great open source paste tool where users can store plain text, e.g. to source code snippets for code review.
+
+## Features :
+- Privacy options
+- Expiration options
+- Burn after reading
+- Password protection (server-side hashed)
+- Raw paste viewing
+
 
 ## Requirements
 - [All requirements by Laravel](https://laravel.com/docs/installation#server-requirements) - PHP, OpenSSL, [Composer](https://getcomposer.org/) and such.
-- MySQL or MariaDB. Actually, any DBMS supported by Laravel should work.
+- MySQL or MariaDB.
 
-  The official Paste Yuk! installation uses MySQL as the database system and this is the only official system we support. While Laravel technically supports PostgreSQL and SQLite, we can't guarantee that it will work fine with Paste Yuk! as we've never tested it. Feel free to read [Laravel's documentation](https://laravel.com/docs/database#configuration) on that topic if you feel adventurous.
 
 ## Install
 1. Run `composer install`

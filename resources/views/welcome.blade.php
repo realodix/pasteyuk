@@ -11,6 +11,12 @@
        @csrf
         <div class="form-row align-items-center">
           <div class="col-auto">
+            @if ($errors->has('pasteTitle'))
+              <div class="alert alert-warning" role="alert">{{ $errors->first('pasteTitle') }}</div>
+            @endif
+            @if ($errors->has('pasteContent'))
+              <div class="alert alert-warning" role="alert">{{ $errors->first('pasteContent') }}</div>
+            @endif
             <label class="sr-only" for="inlineFormInputGroup" name>Name / Title (optional)</label>
             <div class="input-group mb-2">
               <div class="input-group-prepend">
