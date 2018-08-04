@@ -6,7 +6,6 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class StorePaste extends FormRequest
 {
-
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -25,8 +24,8 @@ class StorePaste extends FormRequest
     public function rules()
     {
         return [
-            'pasteTitle' => 'max:70',
-            'pasteContent' => 'required',
+            'pasteTitle'    => 'max:70',
+            'pasteContent'  => 'required',
             'pastePassword' => 'required_if:privacy,password',
         ];
     }
@@ -34,9 +33,9 @@ class StorePaste extends FormRequest
     public function messages()
     {
         return [
-            'pasteContent.required' => 'Your paste cannot be empty',
+            'pasteContent.required'     => 'Your paste cannot be empty',
             'pastePassword.required_if' => 'Please enter a password',
-            'pasteTitle.max' => 'Title must not exceed 70 characters'
+            'pasteTitle.max'            => 'Title must not exceed 70 characters',
         ];
     }
 }

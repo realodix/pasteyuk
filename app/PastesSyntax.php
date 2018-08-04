@@ -13,7 +13,7 @@ class PastesSyntax extends Model
      */
     protected $fillable = [
         'syntax_id',
-        'syntax_name'
+        'syntax_name',
     ];
 
     /**
