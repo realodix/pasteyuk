@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Paste;
-use App\PastesSyntax;
 
 class ArchiveController extends Controller
 {
@@ -16,7 +14,7 @@ class ArchiveController extends Controller
                         ->paginate(50);
 
         return view('archive', [
-            'pastes' => $pastes
+            'pastes' => $pastes,
         ]);
     }
 
@@ -29,7 +27,7 @@ class ArchiveController extends Controller
                         ->paginate(50);
 
         return view('archive-tag', [
-            'pastes' => $pastes
+            'pastes' => $pastes,
         ]);
     }
 }

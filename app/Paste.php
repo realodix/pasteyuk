@@ -3,7 +3,6 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\PastesSyntax;
 
 class Paste extends Model
 {
@@ -18,7 +17,7 @@ class Paste extends Model
         'expiration',
         'privacy',
         'password',
-        'burnAfter'
+        'burnAfter',
     ];
 
     public function user()

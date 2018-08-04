@@ -41,18 +41,21 @@ class LoginController extends Controller
 
     /**
      * Memeriksa username atau email.
+     *
      * @return string
      */
     public function username()
     {
-        $identity  = request()->get('identity');
+        $identity = request()->get('identity');
         $fieldName = filter_var($identity, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
         request()->merge([$fieldName => $identity]);
+
         return $fieldName;
     }
 
     /**
      * Validasi user saat login.
+     *
      * @param Request $request
      */
     protected function validateLogin(Request $request)
@@ -72,12 +75,15 @@ class LoginController extends Controller
 
     /**
      * Notifikasi ketika user gagal login.
+     *
      * @param Request $request
+     *
      * @throws ValidationException
      */
     protected function sendFailedLoginResponse(Request $request)
     {
         $request->session()->put('login_error', trans('auth.failed'));
+
         throw ValidationException::withMessages(
             [
                 'error' => [trans('auth.failed')],
