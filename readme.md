@@ -1,6 +1,5 @@
-<p align="center">![image](docs/images/screenshot.png)</p>
+<p align="center">![image](https://raw.githubusercontent.com/realodix/pasteyuk/master/docs/images/screenshot.png)</p>
 <h1 align="center">Paste tool built with Laravel.</h1>
-===
 
 Paste Yuk! is a great open source paste tool where users can store plain text, e.g. to source code snippets for code review.
 

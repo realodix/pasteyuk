@@ -82,6 +82,6 @@
     </div>
   </footer>
 
-  <script src="{{ asset('vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}" defer></script>
+  <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
