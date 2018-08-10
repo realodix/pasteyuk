@@ -63,11 +63,11 @@ class PasteController extends Controller
         // URL dibuat dari id paste, lalu digenerate ke dalam 6 (huruf kecil & angka)
         // https://github.com/ivanakimov/hashids.php
         $hashids = new Hashids('', 6);
-        $generatedLinkDB = Paste::orderBy('id', 'desc')->limit(1)->first();
-        if (empty($generatedLinkDB)) {
+        $paste_id = Paste::orderBy('id', 'desc')->limit(1)->first();
+        if (empty($paste_id)) {
             $generatedLink = $hashids->encode(1);
         } else {
-            $generatedLink = $hashids->encode($generatedLinkDB->id + 1);
+            $generatedLink = $hashids->encode($paste_id->id + 1);
         }
 
         Paste::create([
