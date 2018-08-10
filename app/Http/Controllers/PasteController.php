@@ -11,7 +11,6 @@ use Hashids\Hashids;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
-use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Input;
 
@@ -74,7 +73,7 @@ class PasteController extends Controller
         Paste::create([
             'userId'     => (Auth::check()) ? Auth::id() : 0,
             'title'      => $title,
-            'content'    => Crypt::encryptString(Input::get('pasteContent')),
+            'content'    => Input::get('pasteContent'),
             'link'       => $generatedLink,
             'views'      => '0',
             'ip'         => $request->ip(),
@@ -169,7 +168,7 @@ class PasteController extends Controller
         // Return view
         return view('paste/view', [
             'title'        => $paste->title,
-            'content'      => Crypt::decryptString($paste->content),
+            'content'      => $paste->content,
             'link'         => $link,
             'views'        => $paste->views,
             'syntax'       => $paste->pasteSyntax->syntax_name,
@@ -179,7 +178,7 @@ class PasteController extends Controller
             'sameUser'     => $isSameUser,
             'date'         => $paste->created_at->format('M jS, Y'),
             'fulldate'     => $paste->created_at->format('d/m/Y - H:i:s'),
-            'getPasteSize' => round(strlen(Crypt::decryptString($paste->content)) / 1024, 2),
+            'getPasteSize' => round(strlen($paste->content) / 1024, 2),
         ]);
     }
 
@@ -247,7 +246,7 @@ class PasteController extends Controller
             $paste->increment('views');
         }
 
-        return response(Crypt::decryptString($paste->content), 200)
+        return response($paste->content, 200)
                 ->header('Content-Type', 'text/plain');
     }
 
@@ -277,7 +276,7 @@ class PasteController extends Controller
             }
         }
 
-        return response(Crypt::decryptString($paste->content), 200)
+        return response($paste->content, 200)
                 ->header('Content-Type', 'text/plain')
                 ->header('Content-disposition', 'attachment; filename="'.$paste->title.'.txt"');
     }
