@@ -19,7 +19,7 @@ Paste Yuk! is a great open source paste tool where users can store plain text, e
 ## Install
 1. Run `composer install`
 
-2. Rename `.env.example` file to `.env`
+2. Rename `.env.example` file to `.env` or run `cp .env.example .env`.
 
    Update `.env` to your specific needs. Don't forget to set `DB_USERNAME` and `DB_PASSWORD` with the settings used behind.
 
