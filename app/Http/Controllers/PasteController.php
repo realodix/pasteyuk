@@ -190,17 +190,15 @@ class PasteController extends Controller
         $diffTimeCreated = time() - $paste->created_at->timestamp;
         $diffTimeUpdated = time() - $paste->updated_at->timestamp;
 
-        if ($expTime != 0) {
-            if ($paste->burnAfter == 0) {
-                if (time() > strtotime($expTime)) {
-                    if ($isSameUser) {
-                        $expiration = 'Expired';
-                    } else {
-                        abort('404');
-                    }
+        if ($expTime != 0 && $paste->burnAfter == 0) {
+            if (time() > strtotime($expTime)) {
+                if ($isSameUser) {
+                    $expiration = 'Expired';
                 } else {
-                    $expiration = Carbon::parse($expTime)->diffForHumans();
+                    abort('404');
                 }
+            } else {
+                $expiration = Carbon::parse($expTime)->diffForHumans();
             }
         }
 
@@ -211,14 +209,12 @@ class PasteController extends Controller
                 abort('404');
             }
         } elseif ($paste->privacy == 'password') {
-            if ($request->isMethod('post')) {
-                if (! Hash::check(Input::get('pastePassword'), $paste->password)) {
-                    return view('paste/password', [
-                        'title'         => $paste->title,
-                        'link'          => url()->current(),
-                        'wrongPassword' => true,
-                    ]);
-                }
+            if ($request->isMethod('post') && ! Hash::check(Input::get('pastePassword'), $paste->password)) {
+                return view('paste/password', [
+                    'title'         => $paste->title,
+                    'link'          => url()->current(),
+                    'wrongPassword' => true,
+                ]);
 
                 // Jika pengguna tidak sama dan paste dibuat lebih dari 3 detik yang lalu:
             } elseif (! $isSameUser && $diffTimeCreated > $this->expWatchTime) {
@@ -254,14 +250,12 @@ class PasteController extends Controller
         $diffTimeCreated = time() - $paste->created_at->timestamp;
 
         if ($paste->privacy == 'password') {
-            if ($request->isMethod('post')) {
-                if (! Hash::check(Input::get('pastePassword'), $paste->password)) {
-                    return view('paste/password', [
-                        'title'         => $paste->title,
-                        'link'          => url()->current(),
-                        'wrongPassword' => true,
-                    ]);
-                }
+            if ($request->isMethod('post') && ! Hash::check(Input::get('pastePassword'), $paste->password)) {
+                return view('paste/password', [
+                    'title'         => $paste->title,
+                    'link'          => url()->current(),
+                    'wrongPassword' => true,
+                ]);
 
                 // Jika pengguna tidak sama dan paste dibuat lebih dari 3 detik yang lalu:
             } elseif (! $isSameUser && $diffTimeCreated > $this->expWatchTime) {
