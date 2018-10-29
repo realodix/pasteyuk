@@ -85,7 +85,7 @@ class PasteController extends Controller
 
     public function view($link, Request $request)
     {
-        $paste = Paste::where('link', 'LIKE BINARY', $link)->firstOrFail();
+        $paste = Paste::where('link', $link)->firstOrFail();
 
         // Apakah user yang terhubung adalah orang yang membuat post paste?
         $isSameUser = ((Auth::user() == $paste->user && $paste->userId != 0)) ? true : false;
@@ -181,7 +181,7 @@ class PasteController extends Controller
     public function raw($link, Request $request)
     {
         header('Content-Type: text/plain');
-        $paste = Paste::where('link', 'LIKE BINARY', $link)->firstOrFail();
+        $paste = Paste::where('link', $link)->firstOrFail();
 
         // Apakah user yang terhubung adalah orang yang menulis paste?
         $isSameUser = ((Auth::user() == $paste->user && $paste->userId != 0)) ? true : false;
@@ -248,7 +248,7 @@ class PasteController extends Controller
 
     public function download($link, Request $request)
     {
-        $paste = Paste::where('link', 'LIKE BINARY', $link)->firstOrFail();
+        $paste = Paste::where('link', $link)->firstOrFail();
 
         $isSameUser = ((Auth::user() == $paste->user && $paste->userId != 0)) ? true : false;
         $diffTimeCreated = time() - $paste->created_at->timestamp;

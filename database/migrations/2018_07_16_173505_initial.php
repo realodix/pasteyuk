@@ -28,7 +28,7 @@ class initial extends Migration
             $table->integer('userId');
             $table->string('title');
             $table->longText('content');
-            $table->string('link')->unique();
+            $table->string('link')->collation('utf8mb4_bin')->unique();
             $table->integer('views');
             $table->string('ip');
             $table->string('syntax');
