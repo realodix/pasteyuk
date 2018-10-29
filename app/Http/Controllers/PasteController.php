@@ -132,7 +132,7 @@ class PasteController extends Controller
             $privacy = 'password-protected';
 
             if ($request->isMethod('post')) {
-                if (!Hash::check(Input::get('pastePassword'), $paste->password)) {
+                if (! Hash::check(Input::get('pastePassword'), $paste->password)) {
                     return view('paste/password', [
                         'title'         => $paste->title,
                         'link'          => url()->current(),
@@ -140,7 +140,7 @@ class PasteController extends Controller
                     ]);
                 }
                 // Jika pengguna tidak sama dan paste dibuat lebih dari 3 detik yang lalu:
-            } elseif (!$isSameUser && $diffTimeCreated > $this->expWatchTime) {
+            } elseif (! $isSameUser && $diffTimeCreated > $this->expWatchTime) {
                 return view('paste/password', [
                     'title' => $paste->title,
                     'link'  => url()->current(),
@@ -212,7 +212,7 @@ class PasteController extends Controller
             }
         } elseif ($paste->privacy == 'password') {
             if ($request->isMethod('post')) {
-                if (!Hash::check(Input::get('pastePassword'), $paste->password)) {
+                if (! Hash::check(Input::get('pastePassword'), $paste->password)) {
                     return view('paste/password', [
                         'title'         => $paste->title,
                         'link'          => url()->current(),
@@ -221,7 +221,7 @@ class PasteController extends Controller
                 }
 
                 // Jika pengguna tidak sama dan paste dibuat lebih dari 3 detik yang lalu:
-            } elseif (!$isSameUser && $diffTimeCreated > $this->expWatchTime) {
+            } elseif (! $isSameUser && $diffTimeCreated > $this->expWatchTime) {
                 return view('paste/password', [
                     'title' => $paste->title,
                     'link'  => url()->current(),
@@ -255,7 +255,7 @@ class PasteController extends Controller
 
         if ($paste->privacy == 'password') {
             if ($request->isMethod('post')) {
-                if (!Hash::check(Input::get('pastePassword'), $paste->password)) {
+                if (! Hash::check(Input::get('pastePassword'), $paste->password)) {
                     return view('paste/password', [
                         'title'         => $paste->title,
                         'link'          => url()->current(),
@@ -264,7 +264,7 @@ class PasteController extends Controller
                 }
 
                 // Jika pengguna tidak sama dan paste dibuat lebih dari 3 detik yang lalu:
-            } elseif (!$isSameUser && $diffTimeCreated > $this->expWatchTime) {
+            } elseif (! $isSameUser && $diffTimeCreated > $this->expWatchTime) {
                 return view('paste/password', [
                     'title' => $paste->title,
                     'link'  => url()->current(),
