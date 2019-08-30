@@ -216,7 +216,7 @@ class PasteController extends Controller
                     'wrongPassword' => true,
                 ]);
 
-                // Jika pengguna tidak sama dan paste dibuat lebih dari 3 detik yang lalu:
+            // Jika pengguna tidak sama dan paste dibuat lebih dari 3 detik yang lalu:
             } elseif (! $isSameUser && $diffTimeCreated > $this->expWatchTime) {
                 return view('paste/password', [
                     'title' => $paste->title,
@@ -257,7 +257,7 @@ class PasteController extends Controller
                     'wrongPassword' => true,
                 ]);
 
-                // Jika pengguna tidak sama dan paste dibuat lebih dari 3 detik yang lalu:
+            // Jika pengguna tidak sama dan paste dibuat lebih dari 3 detik yang lalu:
             } elseif (! $isSameUser && $diffTimeCreated > $this->expWatchTime) {
                 return view('paste/password', [
                     'title' => $paste->title,
