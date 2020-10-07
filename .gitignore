@@ -10,3 +10,8 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+#
+/.idea
+/public/*/*.map
+.php_cs.cache
+PHP_Insights.json
