@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
-use App\Paste;
-use App\PastesSyntax;
+use App\Models\Paste;
+use App\Models\PastesSyntax;
 use Carbon\Carbon;
 use Hashids\Hashids;
 use Illuminate\Http\Request;
