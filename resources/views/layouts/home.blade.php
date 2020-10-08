@@ -41,7 +41,7 @@
         @auth
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                {{ title_case(Auth::user()->username) }}
+                {{ Str::title(Auth::user()->username) }}
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="#">Profile</a>
