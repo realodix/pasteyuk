@@ -1,7 +1,8 @@
 <?php
 
-use Faker\Generator as Faker;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class UsersTableSeeder extends Seeder
 {
@@ -10,7 +11,7 @@ class UsersTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run(Faker $faker)
+    public function run()
     {
         $now = now();
 
@@ -18,7 +19,7 @@ class UsersTableSeeder extends Seeder
             'username'       => 'admin',
             'name'           => 'Admin',
             'email'          => 'admin@admin.com',
-            'password'       => '$2y$10$FP6GRJ8NTlBnTes.hI8zUetrJwjGk3HEXxgvhiEMToOGoV6Fw90Jy',
+            'password'       => Hash::make('admin'),
             'remember_token' => '1EuDF59xgwO4YZ7Vau0KkeAx1p0k7GkkGuOl6o0xhtwa24HX0PBq3yClOBd6',
             'created_at'     => $now,
             'updated_at'     => $now,
