@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 // use App\Http\Requests;
-use App\Paste;
+use App\Models\Paste;
 // use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 

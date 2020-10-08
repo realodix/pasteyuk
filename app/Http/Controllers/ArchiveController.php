@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Paste;
+use App\Models\Paste;
 
 class ArchiveController extends Controller
 {

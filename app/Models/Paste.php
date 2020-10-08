@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -22,11 +22,11 @@ class Paste extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\User', 'userId', 'id');
+        return $this->belongsTo('App\Models\User', 'userId', 'id');
     }
 
     public function pasteSyntax()
     {
-        return $this->hasOne('App\PastesSyntax', 'syntax_id', 'syntax');
+        return $this->hasOne('App\Models\PastesSyntax', 'syntax_id', 'syntax');
     }
 }
