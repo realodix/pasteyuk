@@ -1,9 +1,10 @@
 ![screenshot](https://raw.githubusercontent.com/realodix/pasteyuk/master/docs/images/screenshot.png)
-<h1 align="center">Paste tool built with Laravel.</h1>
+
+# Paste tool built with Laravel
 
 Paste Yuk! is a great open source paste tool where users can store plain text, e.g. to source code snippets for code review.
 
-## Features :
+### Features :
 - Privacy options
 - Expiration options
 - Burn after reading
@@ -11,12 +12,12 @@ Paste Yuk! is a great open source paste tool where users can store plain text, e
 - Raw paste viewing
 
 
-## Requirements
+### Requirements
 - [All requirements by Laravel](https://laravel.com/docs/installation#server-requirements) - PHP, OpenSSL, [Composer](https://getcomposer.org/) and such.
 - MySQL or MariaDB.
 
 
-## Install
+### Install
 1. Run `composer install`
 
 2. Rename `.env.example` file to `.env` or run `cp .env.example .env`.
