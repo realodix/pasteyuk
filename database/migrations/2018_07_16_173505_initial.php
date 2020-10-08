@@ -14,7 +14,7 @@ class initial extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->string('username')->unique();
             $table->string('name');
             $table->string('email')->unique();
@@ -24,7 +24,7 @@ class initial extends Migration
         });
 
         Schema::create('pastes', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->integer('userId');
             $table->string('title');
             $table->longText('content');
