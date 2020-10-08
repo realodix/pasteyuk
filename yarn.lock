@@ -978,7 +978,7 @@ bonjour@^3.5.0:
     multicast-dns "^6.0.1"
     multicast-dns-service-types "^1.1.0"
 
-bootstrap@^4.1.0:
+bootstrap@^4.5.2:
   version "4.5.2"
   resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.5.2.tgz#a85c4eda59155f0d71186b6e6ad9b875813779ab"
   integrity sha512-vlGn0bcySYl/iV+BGA544JkkZP5LB3jsmkeKLFQakCOwCM3AOk7VkldBz4jrzSe+Z0Ezn99NVXa1o45cQY4R6A==
@@ -1248,14 +1248,14 @@ caniuse-api@^1.5.2:
     lodash.uniq "^4.5.0"
 
 caniuse-db@^1.0.30000529, caniuse-db@^1.0.30000634, caniuse-db@^1.0.30000639:
-  version "1.0.30001144"
-  resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30001144.tgz#01d9d5b8241a793bd4b4b0ce720b91b2f75f82d4"
-  integrity sha512-kTOwln0YrcSzFUltSOTwp7VDc3ubCEKe2ubUbnQCyvIfxNnx+HQ8tbd0vEswU86pb0cw1aNk8XTuyD7+VSU+Mg==
+  version "1.0.30001146"
+  resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30001146.tgz#a6838b85b5c41522eb0d7b1eb6078716c050d6ae"
+  integrity sha512-mbvAE+EdgRMMRGlyq06t8drLBbakOWPEfKK8NJQCuCQSY5mJbR5Oi/1xlw2PgzUyY8f5v/lF5jf5CAq2xw0rjw==
 
 caniuse-lite@^1.0.30000792, caniuse-lite@^1.0.30000805, caniuse-lite@^1.0.30000844:
-  version "1.0.30001144"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001144.tgz#bca0fffde12f97e1127a351fec3bfc1971aa3b3d"
-  integrity sha512-4GQTEWNMnVZVOFG3BK0xvGeaDAtiPAbG2N8yuMXuXzx/c2Vd4XoMPO8+E918zeXn5IF0FRVtGShBfkfQea2wHQ==
+  version "1.0.30001146"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001146.tgz#c61fcb1474520c1462913689201fb292ba6f447c"
+  integrity sha512-VAy5RHDfTJhpxnDdp2n40GPPLp3KqNrXz1QqFv4J64HvArKs8nuNMOWkB3ICOaBTU/Aj4rYAo/ytdQDDFF/Pug==
 
 caseless@~0.12.0:
   version "0.12.0"
