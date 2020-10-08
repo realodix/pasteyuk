@@ -1,4 +1,4 @@
-.py-home, .py-archive, .py-paste, .py-paste-password {
+.py-paste-password, .py-paste, .py-archive, .py-home {
   padding-top: 70px;
   padding-bottom: 70px;
 }
@@ -9,29 +9,29 @@
 }
 
 .py-card {
-  -webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.03);
-          box-shadow: 0 2px 3px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.03);
 }
-
 .py-badge {
   background: #eff3f6;
   color: #6b6b6b;
   border: 1px solid rgba(27, 31, 35, 0.2);
   font-weight: 300;
   display: inline-block;
-  padding: .25em .4em;
+  padding: 0.25em 0.4em;
   line-height: 1;
   text-align: center;
   white-space: nowrap;
   vertical-align: baseline;
-  border-radius: .25rem;
+  border-radius: 0.25rem;
 }
-
 .py-badge a {
   color: #6b6b6b;
   text-decoration: none;
 }
 
+/*
+* Bootstrap 4 overrides
+*/
 body {
   background: #f5f6fa;
   color: #313944;
@@ -45,24 +45,20 @@ body {
 .py-paste .code-header {
   border-bottom: 1px solid rgba(77, 82, 89, 0.07);
 }
-
 .py-paste .code-header-button {
   font-size: 12px;
 }
-
 .py-paste .syntax {
   background-color: #fff;
   padding: 1.25rem;
 }
-
 .py-paste .syntax pre {
   white-space: pre-wrap !important;
 }
-
 footer {
   font-size: 85%;
 }
-
 footer .fa-heart {
   color: #d43c67;
 }
+/*# sourceMappingURL=pasteyuk.css.map*/
