@@ -9,6 +9,7 @@
         "doctrine/dbal": "^2.8",
         "fideloper/proxy": "^4.0",
         "hashids/hashids": "^3.0",
+        "laravel/ui": "^2.0",
         "laravel/framework": "^7.0",
         "laravel/tinker": "^2.0"
     },
