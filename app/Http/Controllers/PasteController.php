@@ -5,13 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use App\Paste;
 use App\PastesSyntax;
-use App\User;
 use Carbon\Carbon;
 use Hashids\Hashids;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Input;
 
 class PasteController extends Controller
 {
@@ -20,14 +18,14 @@ class PasteController extends Controller
 
     public function submit(Requests\StorePaste $request)
     {
-        $title = (empty(trim(Input::get('pasteTitle')))) ? 'Untitled' : Input::get('pasteTitle');
+        $title = (empty(trim($request->input('pasteTitle')))) ? 'Untitled' : $request->input('pasteTitle');
 
-        $expiration = Input::get('expire');
-        $privacy = Input::get('privacy');
+        $expiration = $request->input('expire');
+        $privacy = $request->input('privacy');
 
         // Jika user memilih ingin dilindungi dengan password, password akan disimpan, jika tidak akan ditandai 'disabled'
         if ($privacy == 'password') {
-            $password = Hash::make(Input::get('pastePassword'));
+            $password = Hash::make($request->input('pastePassword'));
         } else {
             $password = 'disabled';
         }
@@ -68,11 +66,11 @@ class PasteController extends Controller
         Paste::create([
             'userId'     => (Auth::check()) ? Auth::id() : 0,
             'title'      => $title,
-            'content'    => Input::get('pasteContent'),
+            'content'    => $request->input('pasteContent'),
             'link'       => $generatedLink,
             'views'      => '0',
             'ip'         => $request->ip(),
-            'syntax'     => Input::get('syntaxhighlighting'),
+            'syntax'     => $request->input('syntaxhighlighting'),
             'expiration' => $timestampExp,
             'privacy'    => $privacy,
             'password'   => $password,
@@ -131,7 +129,7 @@ class PasteController extends Controller
             $privacy = 'password-protected';
 
             if ($request->isMethod('post')) {
-                if (! Hash::check(Input::get('pastePassword'), $paste->password)) {
+                if (! Hash::check($request->input('pastePassword'), $paste->password)) {
                     return view('paste/password', [
                         'title'         => $paste->title,
                         'link'          => url()->current(),
@@ -208,7 +206,7 @@ class PasteController extends Controller
                 abort('404');
             }
         } elseif ($paste->privacy == 'password') {
-            if ($request->isMethod('post') && ! Hash::check(Input::get('pastePassword'), $paste->password)) {
+            if ($request->isMethod('post') && ! Hash::check($request->input('pastePassword'), $paste->password)) {
                 return view('paste/password', [
                     'title'         => $paste->title,
                     'link'          => url()->current(),
@@ -249,7 +247,7 @@ class PasteController extends Controller
         $diffTimeCreated = time() - $paste->created_at->timestamp;
 
         if ($paste->privacy == 'password') {
-            if ($request->isMethod('post') && ! Hash::check(Input::get('pastePassword'), $paste->password)) {
+            if ($request->isMethod('post') && ! Hash::check($request->input('pastePassword'), $paste->password)) {
                 return view('paste/password', [
                     'title'         => $paste->title,
                     'link'          => url()->current(),
@@ -294,8 +292,8 @@ class PasteController extends Controller
     //         'pastePassword' => 'required',
     //     ], $messages);
     //
-    //     if (Hash::check(Input::get('pastePassword'), $paste->password)) {
-    //         Cookie::queue($paste->link, Input::get('pastePassword'), 15);
+    //     if (Hash::check($request->input('pastePassword'), $paste->password)) {
+    //         Cookie::queue($paste->link, $request->input('pastePassword'), 15);
     //         return redirect('/'.$link);
     //     } else {
     //         return view('paste/password', [
