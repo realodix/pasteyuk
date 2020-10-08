@@ -4,9 +4,9 @@ mix.options({
  processCssUrls: false
 });
 
-mix.sass('resources/assets/sass/pasteyuk.scss', 'public/css', {outputStyle: 'expanded'})
-   .sass('resources/assets/sass/auth/auth.scss', 'public/css')
-   .sass('resources/assets/sass/bootstrap-purple/bootstrap-purple.scss', 'public/css', {outputStyle: 'expanded'})
+mix.sass('resources/sass/pasteyuk.scss', 'public/css', {outputStyle: 'expanded'})
+   .sass('resources/sass/auth/auth.scss', 'public/css')
+   .sass('resources/sass/bootstrap-purple/bootstrap-purple.scss', 'public/css', {outputStyle: 'expanded'})
    .js([
       'node_modules/bootstrap/dist/js/bootstrap.bundle.js'
    ], 'public/js/app.js');;
