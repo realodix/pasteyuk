@@ -24,23 +24,5 @@ class UsersTableSeeder extends Seeder
             'created_at'     => $now,
             'updated_at'     => $now,
         ]);
-
-        // foreach(range(0,500) as $i){
-        //     DB::table('pastes')->insert([
-        //         'userId' => 0,
-        //         'title' => $faker->jobTitle,
-        //         'content' => Crypt::encryptString($faker->realText($maxNbChars = 200, $indexSize = 2)),
-        //         'link' => $faker->regexify('[a-zA-Z0-9]{8}'),
-        //         'views' => 0,
-        //         'ip' => $faker->localIpv4,
-        //         'syntax' => 0,
-        //         'expiration' => 0,
-        //         'privacy' => 0,
-        //         'password' => 0,
-        //         'burnAfter' => 0,
-        //         'created_at' => $now,
-        //         'updated_at' => $now
-        //     ]);
-        // }
     }
 }
